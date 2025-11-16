@@ -5,12 +5,12 @@ Related files are available for download at [OneDrive](https://mcgill-my.sharepo
 
 The material walks through:
 
-- A two-sample MR analysis of **body mass index (BMI)** on **coronary artery disease (CAD)**
-- A protein-target MR and colocalization analysis of **PCSK9** on **CAD**, using cis-pQTLs from ARIC
+- A two-sample MR analysis of body mass index (BMI) on coronary artery disease (CAD)
+- A protein-target MR and colocalization analysis of PCSK9 on CAD, using cis-pQTLs from ARIC
 
 ---
 
-## Repository contents
+## Contents
 
 - `BMI_noMHC_clumped.tsv`  
   Clumped genome-wide significant SNPs for BMI (exposure) outside the MHC region.  
@@ -20,18 +20,18 @@ The material walks through:
   Script demonstrating a basic two-sample MR pipeline:
   - Load BMI instruments (`BMI_noMHC_clumped.tsv`)
   - Load CAD GWAS summary statistics (`CAD/GCST90132314_buildGRCh38.formatted.tsv.gz`)
-  - Harmonise exposure and outcome
+  - Harmonize exposure and outcome
   - Run standard MR methods (e.g. IVW, MR-Egger)
   - Run basic sensitivity analyses (heterogeneity, pleiotropy, Steiger directionality)
   - Save results and an MR scatter plot to the `output/` directory
 
 - `mr_pcsk9_to_cad.R`  
   Script illustrating MR for a drug-like protein target and colocalization:
-  - Exposure: cis-pQTLs for PCSK9 (`PCSK9.5231_79.tsv`)
-  - Outcome: CAD GWAS (`CAD/GCST90132314_buildGRCh38.formatted.tsv.gz`)
+  - Exposure data: cis-pQTLs for PCSK9 (`PCSK9.5231_79.tsv`)
+  - Outcome data: CAD GWAS (`CAD/GCST90132314_buildGRCh38.formatted.tsv.gz`)
   - Two-sample MR (PCSK9 → CAD) using `TwoSampleMR`
   - Sensitivity analyses (heterogeneity, pleiotropy, Steiger test)
-  - Colocalization at the **PCSK9 locus** using `coloc::coloc.abf`, comparing:
+  - Colocalization at the PCSK9 locus using `coloc::coloc.abf`, comparing:
     - Quantitative trait: circulating PCSK9 protein
     - Binary trait: CAD
   - Saves MR outputs, scatter plot, and colocalization summary into `output/`
