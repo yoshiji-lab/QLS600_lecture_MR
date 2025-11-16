@@ -1,7 +1,7 @@
 # QLS600 Mendelian randomization tutorial
 
 This repository contains R scripts and example data used in the QLS600 lecture on Mendelian randomization (MR).  
-Related files are available for download at [OneDrive](https://mcgill-my.sharepoint.com/:f:/g/personal/satoshi_yoshiji_mcgill_ca/EqW78AwNRZJHialGi8OlcywBo84nzJwVYGNaMGGtAynDYg?e=CAqf8F) ..
+Related files are available for download at [OneDrive](https://mcgill-my.sharepoint.com/:f:/g/personal/satoshi_yoshiji_mcgill_ca/EqW78AwNRZJHialGi8OlcywBo84nzJwVYGNaMGGtAynDYg?e=CAqf8F)  
 
 The material walks through:
 
