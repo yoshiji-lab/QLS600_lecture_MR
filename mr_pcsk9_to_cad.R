@@ -17,7 +17,8 @@ library(data.table)
 # 2. Set working directory and create output folders
 # -------------------------
 # This is the folder where all input and output files live.
-wd <- "/Users/sy/Documents/Studies/0.YoshijiLab/11.lecture/QLS600/MR_tutorial/"
+# Set your own wd!
+wd <- "???"
 setwd(wd)
 
 # Create an "output" folder and subfolders for each type of result.
@@ -65,17 +66,20 @@ outcome_GWAS <- dplyr::rename(outcome_GWAS, SNP = rs_id)
 # rsid, Effect_allele, Other_allele, Effect_allele_freq, BETA, SE, P, N, ...
 #
 # We map these to the standard exposure fields.
+
+#Look into the data to assign these columns!
+
 exp_dat <- read_exposure_data(
   filename          = exp_path,
   sep               = "\t",
   snp_col           = "rsid",
-  beta_col          = "BETA",
-  se_col            = "SE",
-  effect_allele_col = "Effect_allele",
+  beta_col          = "???",
+  se_col            = "???",
+  effect_allele_col = "???",
   other_allele_col  = "Other_allele",
-  eaf_col           = "Effect_allele_freq",
-  pval_col          = "P",
-  samplesize_col    = "N"
+  eaf_col           = "???",
+  pval_col          = "???",
+  samplesize_col    = "???"
 )
 
 # -------------------------
@@ -89,21 +93,24 @@ outcome_GWAS <- dplyr::filter(outcome_GWAS, SNP %in% exp_dat$SNP)
 # -------------------------
 # format_data() converts a generic GWAS data.frame into the standardized format
 # that TwoSampleMR expects for outcome data.
+
+#Look into the data to assign these columns!
+
 formatted_outcome <- format_data(
   outcome_GWAS,
   snps              = exp_dat$SNP,
   type              = "outcome",
-  snp_col           = "SNP",
-  beta_col          = "beta",
-  se_col            = "standard_error",
-  eaf_col           = "effect_allele_frequency",
-  effect_allele_col = "effect_allele",
-  other_allele_col  = "other_allele",
-  pval_col          = "p_value",
-  chr_col           = "chromosome",
-  pos_col           = "base_pair_position",
-  samplesize_col    = "sample_size",
-  ncase_col         = "case"
+  snp_col           = "???",
+  beta_col          = "???",
+  se_col            = "???",
+  eaf_col           = "???",
+  effect_allele_col = "???",
+  other_allele_col  = "???",
+  pval_col          = "???",
+  chr_col           = "???",
+  pos_col           = "???",
+  samplesize_col    = "???",
+  ncase_col         = "???"
 )
 
 # -------------------------
@@ -134,7 +141,7 @@ write.table(exp_dat_outcome, file = exp_data_outcome_name,
 # generate_odds_ratios() converts log-odds estimates to odds ratios
 # for easier interpretation when the outcome is binary (CAD here).
 mr_results <- mr(exp_dat_outcome)
-OR <- generate_odds_ratios(mr_results)
+OR <- generate_odds_ratios(???)
 
 OR_name <- paste0(output_dir, "or/", protname, ".or.txt")
 write.table(OR, file = OR_name,
@@ -145,10 +152,11 @@ write.table(OR, file = OR_name,
 # -------------------------
 # mr_scatter_plot() creates a scatter plot of SNP-exposure vs SNP-outcome effects
 # with the fitted MR line. It returns a list of ggplot objects.
-scatter_list <- mr_scatter_plot(mr_results, exp_dat_outcome)
+scatter_list <- mr_scatter_plot(???, exp_dat_outcome)
 
 # Take the first scatter plot in the list
-scatter_plot <- scatter_list[[1]]
+# How do we specify the first one?
+scatter_plot <- scatter_list[[???]]
 
 print(scatter_plot)
 
@@ -199,6 +207,8 @@ write.table(steiger, file = steiger_name,
 # MR-PRESSO detects horizontal pleiotropic outliers and tests whether
 # omitted
 
+#Skipping 14
+
 # -------------------------
 # 15. Final message
 # -------------------------
@@ -233,10 +243,10 @@ pcsk9_gwas <- data.table::fread(pcsk9_path, data.table = FALSE)
 pcsk9_gwas <- dplyr::rename(
   pcsk9_gwas,
   snp     = rsid,
-  beta    = BETA,
-  SE      = SE,
-  MAF     = Effect_allele_freq,
-  pvalues = P
+  beta    = ???,
+  SE      = ???,
+  MAF     = ???,
+  pvalues = ???
 )
 
 # Compute variance of beta (varbeta = SE^2)
@@ -268,10 +278,10 @@ cad_full <- data.table::fread(outcome_path, data.table = FALSE)
 cad_df <- dplyr::rename(
   cad_full,
   snp     = rs_id,
-  beta    = beta,
-  SE      = standard_error,
-  MAF     = effect_allele_frequency,
-  pvalues = p_value
+  beta    = ???,
+  SE      = ???,
+  MAF     = ???,
+  pvalues = ???
 )
 
 # Compute variance of beta (varbeta = SE^2)
